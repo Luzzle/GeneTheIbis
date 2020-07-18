@@ -248,7 +248,12 @@ client.on('chat', (channel, userstate, message, self) => {
             })
         }
     }
+
+    if (message.startsWith('!so')){
+        
+    }
 })
+
 
 
 setInterval(() => {
