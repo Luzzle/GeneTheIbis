@@ -1,1 +1,5 @@
+#ENV
+variables.env
 
+#JSON
+dontlookhere.json
