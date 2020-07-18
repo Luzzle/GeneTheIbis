@@ -3,3 +3,6 @@ variables.env
 
 #JSON
 dontlookhere.json
+
+#JS
+options.js
