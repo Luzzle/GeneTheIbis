@@ -200,7 +200,7 @@ client.on('chat', (channel, userstate, message, self) => {
 })
 
 
-//!Queue System Below
+//Quote System Below
 
 client.on('chat', (channel, userstate, message, self) => {
     if (self) return
