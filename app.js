@@ -40,12 +40,6 @@ admin.initializeApp({
 
 var database = admin.database();
 
-database.ref('Test').once('value', (snapshot) => {
-    snapshot.forEach((childSnapshot) => {
-        console.log(`${childSnapshot.key} : ${childSnapshot.val()}`)
-    })
-})
-
 // API Request Functions
 async function getChannelInfo(){
     
