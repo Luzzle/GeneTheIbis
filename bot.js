@@ -11,6 +11,9 @@ const tmi = require("tmi.js");
 const axios = require("axios");
 const env = require("dotenv").config({path: "keys.env"});
 
+//? BOT SCRIPTS
+const cmd = require("./scripts/commands.js")
+
 //? CONSTANTS
 const VARS = process.env;
 
@@ -24,7 +27,7 @@ const bot = new tmi.Client({
         username: "GeneTheIbis",
         password: VARS.BOT_OAUTH_TOKEN
     },
-    channels: ["TheTrashCanArmy"]
+    channels: ["LuzzLuz"]
 });
 
 bot.connect();
@@ -35,5 +38,17 @@ bot.once("connected", () => {
 
 //? BOT COMMANDS
 bot.on("message", (channel, user, message, self) => {
-    console.log(message);
+
+    if (self) return;
+
+    console.log(user["display-name"] + ": " + message);
+
+    let messageData = {
+        name: user["display-name"],
+        msg: message,
+    };
+
+    bot.say(channel, cmd.executeCommand(messageData));
+
 })
+
