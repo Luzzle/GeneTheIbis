@@ -6,22 +6,31 @@
 //!
 //! =========================================================================================
 
+const twitch = require("./twitch")
 
-exports.executeCommand = function executeCommand(message){
+function dbCommand(cmdName){
+    
+}
 
-    switch(message.msg){
 
-        case "pog":
+exports.executeCommand = async function executeCommand(message){
+
+     switch(message.msg){
+
+         case "pog":
+             {
+                 return "Poggies";
+             }
+
+        case "followers":
             {
-                return "Poggies";
+                return await twitch.getFollowers();
             }
 
         default:
-            return "Command not found!";
+            return "Command not found!"
 
-    }
-
+    }   
 }
-
 
 

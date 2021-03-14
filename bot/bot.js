@@ -1,6 +1,6 @@
 //! =========================================================================================
 //!
-//!     GENE THE IBIS© - A TWITCH BOT FOR THE TRASHCANARMY
+//!     GENE THE IBIS © - A TWITCH BOT FOR THE TRASHCANARMY
 //!     COPYRIGHT 2020 - 2021, CRISTIAN LUSTRI. ALL RIGHTS RESERVED
 //!     BOT.JS
 //!
@@ -12,7 +12,8 @@ const axios = require("axios");
 const env = require("dotenv").config({path: "keys.env"});
 
 //? BOT SCRIPTS
-const cmd = require("./scripts/commands.js")
+const cmd = require("./scripts/commands") 
+const twitch = require("./scripts/twitch")
 
 //? CONSTANTS
 const VARS = process.env;
@@ -28,16 +29,16 @@ const bot = new tmi.Client({
         password: VARS.BOT_OAUTH_TOKEN
     },
     channels: ["LuzzLuz"]
-});
+}); // Initialize the bot and bind it to the channel. NOTE: NOT IN DEBUG MODE
 
-bot.connect();
+bot.connect(); // Connect the bot
 
 bot.once("connected", () => {
-    console.log("Connected to TheTrashCanArmy");
+    console.log(`Connected to TheTrashCanArmy`); // Once the bot is connected, log to the console to confirm
 })
 
 //? BOT COMMANDS
-bot.on("message", (channel, user, message, self) => {
+bot.on("message", async (channel, user, message, self) => {
 
     if (self) return;
 
@@ -46,9 +47,11 @@ bot.on("message", (channel, user, message, self) => {
     let messageData = {
         name: user["display-name"],
         msg: message,
-    };
+    }; // Create a message object and pass it through to the commands function
+    
+    cmd.executeCommand(messageData).then((data) => {
+        bot.say(channel, data);
+    })
 
-    bot.say(channel, cmd.executeCommand(messageData));
-
-})
+});
 
