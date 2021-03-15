@@ -6,3 +6,9 @@
 //!
 //! =========================================================================================
 
+//? NPM MODULES
+const firebase = require("firebase-admin");
+
+exports.getPrefix = async function getPrefix(){
+    return (await firebase.database().ref("prefix").get()).val();
+}

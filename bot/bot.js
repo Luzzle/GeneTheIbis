@@ -12,11 +12,13 @@ const axios = require("axios");
 const env = require("dotenv").config({path: "keys.env"});
 
 //? BOT SCRIPTS
-const cmd = require("./scripts/commands") 
-const twitch = require("./scripts/twitch")
+const cmd = require("./scripts/commands");
+const utils = require("./scripts/utils");
 
-//? CONSTANTS
+//? CONSTANTS AND VARIABLES
 const VARS = process.env;
+let prefix = "";
+
 
 //? BOT INIT
 const bot = new tmi.Client({
@@ -33,8 +35,11 @@ const bot = new tmi.Client({
 
 bot.connect(); // Connect the bot
 
-bot.once("connected", () => {
-    console.log(`Connected to TheTrashCanArmy`); // Once the bot is connected, log to the console to confirm
+bot.once("connected", async () => {
+    utils.getPrefix().then(data => {
+        prefix = data;
+        console.log(`Connected to TheTrashCanArmy`); // Once the bot is connected, log to the console to confirm
+    })
 })
 
 //? BOT COMMANDS
@@ -49,7 +54,7 @@ bot.on("message", async (channel, user, message, self) => {
         msg: message,
     }; // Create a message object and pass it through to the commands function
     
-    cmd.executeCommand(messageData).then((data) => {
+    cmd.executeCommand(messageData, prefix).then((data) => {
         bot.say(channel, data);
     })
 
