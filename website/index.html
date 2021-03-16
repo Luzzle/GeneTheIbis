@@ -3,16 +3,21 @@
     <head>
         <title>Login - GeneTheIbis</title>
         <link rel="stylesheet" href="public/assets/styles/styles.css">
+
+        <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+        <script src="public/assets/scripts/firebaseConfig.js"></script>
+        <script src="public/assets/scripts/auth.js"></script>
     </head>
 
     <body>
-        <div class="card x-center" style="width:50%; margin-top:12rem;">
+        <div class="card x-center" style="width:35%; margin-top:15%;">
             <h1 class="card-header">GeneTheIbis - Login</h1>
             <input placeholder="Username" class="card-input">
-            <input placeholder="Password" class="card-input">
+            <input placeholder="Password" type="password" class="card-input">
 
             <br>
-            <button class="card-btn x-center">Value</button>
+            <button class="card-btn x-center" onclick="login()">Login</button>
         </div>
     </body>
 </html>

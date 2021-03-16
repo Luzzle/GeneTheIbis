@@ -22,6 +22,7 @@ body{
 }
 
 .card-header{
+    padding-top:1rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
@@ -34,12 +35,13 @@ body{
 .card-btn{
     width: 25%;
     height:2rem;
-    margin-bottom:1rem;
+    margin-bottom:2rem;
     background-color: #F080F2;
     border-color:#F080F2;
     color:white;
     border: 1px solid black;
     border-radius:2pt;
+    
 }
 
 /*! NAVBAR */
