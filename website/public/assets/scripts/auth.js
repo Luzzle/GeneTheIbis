@@ -1,14 +1,34 @@
 firebase.auth().onAuthStateChanged(user => {
     if (user){
-        console.log(user);
+        window.location = "public/pages/dashboard"
     }
 })
 
 
 
-async function login(){
+function login(){
     const EMAIL = document.getElementsByTagName("input")[0].value;
     const PW = document.getElementsByTagName("input")[1].value;
+    const errTextRef = document.getElementsByClassName("card-err")[0];
 
-    console.log(EMAIL, PW);
+    errTextRef.style.visibility = "hidden";
+
+    firebase.auth().signInWithEmailAndPassword(EMAIL, PW).catch(err => {
+        switch (err.code){
+
+            case "auth/invalid-email":
+                errTextRef.innerHTML = "Error: Invalid Email";
+                errTextRef.style.visibility = "visible";
+
+            case "auth/wrong-password":
+            case "auth/operation-not-allowed":
+            case "auth/user-not-found":
+                errTextRef.innerHTML = "Error: Incorrect or missing credentials";
+                errTextRef.style.visibility = "visible";
+            
+            default:
+                console.log(err.code)
+        }
+    })
+
 }

@@ -35,13 +35,18 @@ body{
 .card-btn{
     width: 25%;
     height:2rem;
-    margin-bottom:2rem;
     background-color: #F080F2;
     border-color:#F080F2;
     color:white;
     border: 1px solid black;
     border-radius:2pt;
     
+}
+
+.card-err{
+    font-size:small;
+    color:red;
+    visibility: hidden;
 }
 
 /*! NAVBAR */
