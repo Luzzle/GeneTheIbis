@@ -10,6 +10,7 @@
 const tmi = require("tmi.js");
 const axios = require("axios");
 const env = require("dotenv").config({path: "keys.env"});
+const firebase = require("firebase-admin");
 
 //? BOT SCRIPTS
 const cmd = require("./scripts/commands");
@@ -17,6 +18,7 @@ const utils = require("./scripts/utils");
 
 //? CONSTANTS AND VARIABLES
 const VARS = process.env;
+const ADMINKEY = require("./scripts/admin_key.json");
 let prefix = "";
 
 
@@ -50,7 +52,7 @@ bot.on("message", async (channel, user, message, self) => {
     console.log(user["display-name"] + ": " + message);
 
     let messageData = {
-        name: user["display-name"],
+        usr: user,
         msg: message,
     }; // Create a message object and pass it through to the commands function
     

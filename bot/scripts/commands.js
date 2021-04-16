@@ -8,13 +8,15 @@
 
 const twitch = require("./twitch")
 const db = require("./database")
-
+const quotes = require("./quote")
 
 exports.executeCommand = async function executeCommand(message, prefix){
-
+    
     if(!message.msg.startsWith(prefix)) return "";
 
-     switch(message.msg){
+    if (message.msg.startsWith(prefix + "quote")) return await quotes.quoteCommand(message.msg, message.usr);
+
+    switch(message.msg){
 
          case prefix + "pog":
              {
@@ -26,6 +28,7 @@ exports.executeCommand = async function executeCommand(message, prefix){
                 return await twitch.getFollowers();
             }
 
+        
 
         default:
             return await db.dbCommand(message.msg);

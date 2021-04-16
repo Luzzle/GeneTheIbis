@@ -27,3 +27,4 @@ exports.dbCommand = async function dbCommand(commandName){
     if (cmd.val()) return cmd.val();
     return "Command Not Found!"
 }
+
