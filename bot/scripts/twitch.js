@@ -27,3 +27,15 @@ exports.getFollowers = async function getFollowers(){
 
     return REQ.data.followers.toString();
 }
+
+exports.followage = async function followage(user){
+    const REQ = await axios.get(`https://api.2g.be/twitch/followage/TheTrashCanArmy/${user}?format=mwdhms`);
+    return REQ.data;
+}
+
+exports.uptime = async function uptime(){
+    const REQ = await axios.get("https://beta.decapi.me/twitch/uptime/TheTrashCanArmy");
+    
+    if (REQ.data == "TheTrashCanArmy is offline") return REQ.data;
+    return "TheTrashCanArmy has been live for: " + REQ.data;
+}

@@ -19,7 +19,8 @@ const utils = require("./scripts/utils");
 //? CONSTANTS AND VARIABLES
 const VARS = process.env;
 const ADMINKEY = require("./scripts/admin_key.json");
-let prefix = "";
+
+global.prefix = "";
 
 
 //? BOT INIT

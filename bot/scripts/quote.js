@@ -12,7 +12,6 @@ const utils = require("./utils");
 
 exports.quoteCommand = async function quoteCommand(message, user){
     const quote = message.substr(7);
-    console.log(user);
     if (quote.startsWith("add ")){
 
         if (utils.checkMod(user)){
@@ -24,7 +23,7 @@ exports.quoteCommand = async function quoteCommand(message, user){
             database.ref("Quotes/totalQuotes").set(totalQuotes);
             return `Quote ${totalQuotes} Successfully Added!`;
         }
-        return "User must be a mod to do this action!";
+        return "You must be a mod to do this action!";
     }
 
     if (!quote) {
