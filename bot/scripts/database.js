@@ -23,7 +23,8 @@ firebase.initializeApp({
 });
 
 exports.dbCommand = async function dbCommand(commandName){
-    const cmd = await firebase.database().ref(`Commands/${commandName}`).get();
+    if (!commandName.startsWith(prefix)) return "";
+    const cmd = await firebase.database().ref(`Commands/${commandName.substr(1)}`).get();
     if (cmd.val()) return cmd.val();
     return "Command Not Found!"
 }

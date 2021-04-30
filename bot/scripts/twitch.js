@@ -25,7 +25,7 @@ exports.getFollowers = async function getFollowers(){
             }
         });
 
-    return REQ.data.followers.toString();
+    return `TheTrashCanArmy has ${REQ.data.followers.toString()} followers!`;
 }
 
 exports.followage = async function followage(user){
@@ -38,4 +38,15 @@ exports.uptime = async function uptime(){
     
     if (REQ.data == "TheTrashCanArmy is offline") return REQ.data;
     return "TheTrashCanArmy has been live for: " + REQ.data;
+}
+
+exports.getProfile = async function getProfile(usr){
+    const REQ = await axios.get(`https://api.twitch.tv/kraken/users?login=${usr}`, {
+        headers: {
+            "Client-ID": CLIENT_ID,
+            "Accept": "application/vnd.twitchtv.v5+json",
+        }
+    });
+
+    return REQ.data;
 }
