@@ -38,6 +38,7 @@ const bot = new tmi.Client({
 
 bot.connect(); // Connect the bot
 
+console.clear();
 bot.once("connected", async () => {
     utils.getPrefix().then(data => {
         prefix = data;
