@@ -1,4 +1,4 @@
-body{
+.login{
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: lighter;
     margin:0;
@@ -35,8 +35,8 @@ body{
 .card-btn{
     width: 25%;
     height:2rem;
-    background-color: #F080F2;
-    border-color:#F080F2;
+    background-color: #CE18FF;
+    border-color:#CE18FF;
     color:white;
     border: 1px solid black;
     border-radius:2pt;
@@ -49,18 +49,63 @@ body{
     visibility: hidden;
 }
 
-/*! NAVBAR */
+/*! DASHBOARD */
 
-.navbar{
-    position:relative;
-    display:flex;
-    flex-wrap: wrap;
-    align-items: center;
-    height:5rem;
-    background-color:#F080F2;
+.db-body{
+    margin:1;
 }
 
-/*! BUTTON */
+.db-nav{
+    float:left;
+    width:12vw;
+    height:100vh;
+    background-color:#F7F5FB;
+    border-radius:25px;
+}
 
+.db-nav-logo-area{
+    text-align:center;
+    height:12vh;
+}
+
+.db-nav-logo-text{
+    user-select:none;
+    font-size:3vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.db-nav-item-area{
+    
+}
+
+
+.db-nav-item{
+    cursor:pointer;
+    height:8vh;
+    text-align:left;
+    font-weight:normal;
+    font-size:large;
+    font-family: 'Roboto', sans-serif;
+}
+
+.db-nav-item:hover{
+    background-color: #F2F0FD;
+    border-right:3px solid #CE18FF;
+}
+
+.db-nav-item-icon{
+    width:25%;
+}
+
+.db-nav-item-text{
+    user-select: none;
+    position:absolute;
+    padding-left:2vw;
+    padding-top:2.75vh;
+}
+
+.db-content{
+    float:left;
+}
 
 

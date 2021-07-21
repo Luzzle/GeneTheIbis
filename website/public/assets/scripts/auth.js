@@ -4,8 +4,6 @@ firebase.auth().onAuthStateChanged(user => {
     }
 })
 
-
-
 function login(){
     const EMAIL = document.getElementsByTagName("input")[0].value;
     const PW = document.getElementsByTagName("input")[1].value;
@@ -19,13 +17,15 @@ function login(){
             case "auth/invalid-email":
                 errTextRef.innerHTML = "Error: Invalid Email";
                 errTextRef.style.visibility = "visible";
-
+                break;
+                
             case "auth/wrong-password":
             case "auth/operation-not-allowed":
             case "auth/user-not-found":
                 errTextRef.innerHTML = "Error: Incorrect or missing credentials";
                 errTextRef.style.visibility = "visible";
-            
+                break;
+
             default:
                 console.log(err.code)
         }
