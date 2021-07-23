@@ -1,0 +1,3 @@
+clear
+node bot.js
+

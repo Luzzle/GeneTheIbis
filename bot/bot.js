@@ -38,10 +38,10 @@ const bot = new tmi.Client({
 
 bot.connect(); // Connect the bot
 
-console.clear();
 bot.once("connected", async () => {
-    utils.getPrefix().then(data => {
+    utils.getPrefix().then(async data => {
         prefix = data;
+        await firebase.database().ref("BotState").set("Online");
         console.log(`Connected to TheTrashCanArmy`); // Once the bot is connected, log to the console to confirm
     })
 })
@@ -64,3 +64,22 @@ bot.on("message", async (channel, user, message, self) => {
 
 });
 
+if (process.platform == "win32") {
+    var rl = require("readline").createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    rl.on("SIGINT", () => {
+        process.emit("SIGINT");
+    });
+}
+
+process.on("SIGINT", async () => {
+    console.clear(); 
+    console.log("\x1b[31m", "Shutting Down..."); // Red color code
+
+    await firebase.database().ref("BotState").set("Offline");
+
+    process.exit();
+})
