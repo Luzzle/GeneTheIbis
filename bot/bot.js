@@ -33,7 +33,7 @@ const bot = new tmi.Client({
         username: "GeneTheIbis",
         password: VARS.BOT_OAUTH_TOKEN
     },
-    channels: ["LuzzLuz"]
+    channels: ["TheTrashCanArmy"]
 }); // Initialize the bot and bind it to the channel. NOTE: NOT IN DEBUG MODE
 
 bot.connect(); // Connect the bot
@@ -80,6 +80,6 @@ process.on("SIGINT", async () => {
     console.log("\x1b[31m", "Shutting Down..."); // Red color code
 
     await firebase.database().ref("BotState").set("Offline");
-
+    
     process.exit();
 })

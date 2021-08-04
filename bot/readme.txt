@@ -13,6 +13,3 @@
             1- Open the terminalPaths
             2- cd to the bot folder
             3- run "./start.sh"
-
-    b) How to set channels
-    
