@@ -50,3 +50,30 @@ exports.getProfile = async function getProfile(usr){
 
     return REQ.data;
 }
+
+exports.getChannel = async function getChannel(id){
+    const REQ = await axios.get(`https://api.twitch.tv/kraken/channels/${id}`, {
+        headers: {
+            "Client-ID": CLIENT_ID,
+            "Accept": "application/vnd.twitchtv.v5+json",
+        }
+    });
+    return REQ.data;
+}
+
+exports.shoutout = async function shoutout(usr){
+    const user = usr.substring(4);
+
+    const profile = await exports.getProfile(user);
+    
+    if (profile._total == 0) return "Channel not found!";
+    
+    const id = profile.users[0]._id;
+    
+
+    const channel = await exports.getChannel(id);
+
+
+    return `${channel.display_name} was last seen playing ${channel.game} - Give ${channel.display_name} a follow at https://twitch.tv/${channel.name}`;
+
+}

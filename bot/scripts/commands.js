@@ -20,6 +20,7 @@ exports.executeCommand = async function executeCommand(message, prefix){
     if (message.msg.startsWith(prefix + "bodyslam")) return await misc.bodyslam(message.msg, message.usr['display-name']);
     if (message.msg.startsWith(prefix + "divorce")) return await misc.divorce(message.msg, message.usr['display-name']);
     if (message.msg.startsWith(prefix + "highfive")) return await misc.highfive(message.msg, message.usr['display-name']);
+    if (message.msg.startsWith(prefix + "so")) return await twitch.shoutout(message.msg);
 
 
     switch(message.msg){
@@ -48,7 +49,7 @@ exports.executeCommand = async function executeCommand(message, prefix){
             {
                 return await misc.penis(message.usr['display-name']);
             }
-
+s
         default:
             return await db.dbCommand(message.msg);
 
