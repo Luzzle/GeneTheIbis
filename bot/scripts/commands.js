@@ -51,7 +51,12 @@ exports.executeCommand = async function executeCommand(message, prefix){
             {
                 return await misc.penis(message.usr['display-name']);
             }
-s
+        
+        case prefix + "help":
+            {
+                return "https://github.com/Luzzle/GeneTheIbis/wiki";
+            }
+
         default:
             return await db.dbCommand(message.msg);
 
