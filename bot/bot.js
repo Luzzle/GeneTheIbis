@@ -46,6 +46,7 @@ bot.once("connected", async () => {
     })
 })
 
+
 //? BOT COMMANDS
 bot.on("message", async (channel, user, message, self) => {
 
@@ -83,3 +84,15 @@ process.on("SIGINT", async () => {
     
     process.exit();
 })
+
+setInterval(() => {
+    client.say('TheTrashCanArmy', 'Dont forget to thank the Mods! Heart emotes in chat!')
+}, 1000 * 60 * 50)
+
+setInterval(() => {
+    client.say('TheTrashCanArmy', 'Check out our socials at https://linktr.ee/trashcanarmy')
+}, 1000 * 60 * 30)
+
+setInterval(() => {
+    client.say('TheTrashCanArmy', `These Sexy possums are sponsored by not other than The Lonely Kids Club! To check out these awesome clothes use this link! https://linktr.ee/trashcanarmy Dont forget to use the 'TrashCanArmy' discount code at checkout for 10% Off!`)
+}, 1000 * 60 * 45)
