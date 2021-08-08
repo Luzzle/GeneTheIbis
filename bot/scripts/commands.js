@@ -11,6 +11,7 @@ const db = require("./database");
 const quotes = require("./quote");
 const utils = require("./utils");
 const misc = require("./misc");
+const queue = require("./queue");
 
 exports.executeCommand = async function executeCommand(message, prefix){
     if(!message.msg.startsWith(prefix)) return "";
@@ -22,6 +23,7 @@ exports.executeCommand = async function executeCommand(message, prefix){
     if (message.msg.startsWith(prefix + "highfive")) return await misc.highfive(message.msg, message.usr['display-name']);
     if (message.msg.startsWith(prefix + "so")) return await twitch.shoutout(message.msg);
 
+    if (message.msg.startsWith(prefix + "queue")) return await queue.queueCommand(message.msg, message.usr);
 
     switch(message.msg){
 
